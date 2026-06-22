@@ -10,6 +10,7 @@ const NewReleasesSection = () => {
                 <BookCardWide></BookCardWide>
                 <BookCardWide></BookCardWide>
                 <BookCardWide></BookCardWide>
+                <BookCardWide></BookCardWide>
             </div>
         </div>
     );

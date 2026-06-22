@@ -1,15 +1,32 @@
-import React from 'react';
+import { SearchJoined } from '@/pages/HomePage/SearchJoined';
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+import IconButton from './IconButton';
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import { TbBooks } from "react-icons/tb";
 
 const Navbar = () => {
     return (
-        <div className='mb-4 px-8 my-4 justify-between flex items-center'>
-            <div>Logo</div>
-            <div className='flex gap-4'>
-                <span>Home</span>
-                <span>Categories</span>
-                <span>Collections</span>
+        <div>
+            <div className='flex flex-row justify-between items-center mx-12 my-2'>
+                <div className='flex flex-row items-center gap-2'>
+                    <div className='rounded-md bg-purple-400 w-12 h-12'>
+                        <TbBooks className='h-12 w-12 text-white' />
+                    </div>
+                    <div className='flex flex-col'>
+                        <span className='text-2xl font-semibold'>Bookoe</span>
+                        <span className='text-sm'>Book Store Website</span>
+                    </div>
+                </div>
+                <div className='flex flex-row items-center'>
+                    <div className='mr-1'><SearchJoined></SearchJoined></div>
+                    <IconButton><MdOutlineFavoriteBorder /></IconButton>
+                    <IconButton><HiOutlineShoppingCart /></IconButton>
+                    <IconButton>
+                        <img className='h-8 w-8 rounded-md object-cover' src="https://img.magnific.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80" alt="" />
+                    </IconButton>
+                </div>
             </div>
-            <div className='bg-amber-300 text-black font-normal rounded-md px-4 py-1'>Sign Up</div>
+            <hr className='mb-2' />
         </div>
     );
 };
