@@ -1,18 +1,21 @@
 import { Link } from "react-router";
+import { useShop } from '@/context/ShopContext';
 
 const BookCard = ({
     id,
     coverImage,
     title,
 }) => {
+    const { addToCart } = useShop();
+
     const handleButtonClick = (e) => {
         e.stopPropagation(); // 🚀 THIS IS THE MAGIC LINE
         e.preventDefault(); // 🚀 THIS IS THE MAGIC LINE
-        // alert("Button clicked without navigating!");
+        addToCart(id, 1);
     };
 
     return (
-        <div className='flex flex-col justify-between h-full border rounded-xl p-4 bg-card text-card-foreground shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
+        <div className='flex flex-col justify-between h-full border rounded-xl p-2 bg-card text-card-foreground shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
             <Link to={`/book/${id}`} className='flex flex-col items-center w-full flex-1'>
                 <div className='w-full aspect-[3/4] rounded-lg overflow-hidden bg-muted flex items-center justify-center mb-3 shadow-xs'>
                     <img className='w-full h-full object-cover' src={coverImage} alt={title} />

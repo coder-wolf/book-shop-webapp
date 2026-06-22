@@ -14,7 +14,7 @@ const HomePage = () => {
     // Filters state
     const [selectedAuthors, setSelectedAuthors] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
-    
+
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const booksPerPage = 6;
@@ -47,8 +47,8 @@ const HomePage = () => {
         return books.filter((book) => {
             const matchesSearch = searchQuery
                 ? book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  book.categories.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
+                book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                book.categories.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
                 : true;
 
             const matchesAuthor = selectedAuthors.length > 0
@@ -89,13 +89,13 @@ const HomePage = () => {
     }, [filteredBooks, currentPage]);
 
     const handleAuthorChange = (author, checked) => {
-        setSelectedAuthors(prev => 
+        setSelectedAuthors(prev =>
             checked ? [...prev, author] : prev.filter(a => a !== author)
         );
     };
 
     const handleCategoryChange = (category, checked) => {
-        setSelectedCategories(prev => 
+        setSelectedCategories(prev =>
             checked ? [...prev, category] : prev.filter(c => c !== category)
         );
     };
@@ -109,11 +109,11 @@ const HomePage = () => {
     return (
         <div className="pb-16">
             {/* Hero Section */}
-            <div className='mx-4 md:mx-12 rounded-3xl bg-gradient-to-r from-[#6C5DD4] to-[#8C7DF4] p-8 md:p-12 text-white shadow-xl mb-12 flex flex-col md:flex-row justify-between items-center gap-8 overflow-hidden relative'>
+            <div className='mx-4 md:mx-12 rounded-2xl bg-gradient-to-r from-[#4f34fb] to-[#302b50] p-8 md:p-12 text-white shadow-xl mb-12 flex flex-col md:flex-row justify-between items-center gap-8 overflow-hidden relative'>
                 {/* Visual decorations */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl -ml-24 -mb-24 pointer-events-none" />
-                
+
                 <div className='flex flex-col max-w-xl relative z-10'>
                     <span className='text-xs font-bold uppercase tracking-widest text-[#E3DFFF] mb-3 bg-white/10 px-3 py-1 rounded-full w-max'>Book Store Website</span>
                     <h1 className='text-4xl md:text-5xl font-extrabold leading-tight mb-4'>
@@ -123,13 +123,13 @@ const HomePage = () => {
                         Explore thousands of books ranging from fantasy epics to inspiring biographies. Find the stories that shape your worldview.
                     </p>
                     <div className='flex flex-wrap gap-4'>
-                        <button 
+                        <button
                             onClick={() => document.getElementById('books-container')?.scrollIntoView({ behavior: 'smooth' })}
                             className='bg-white text-[#6C5DD4] hover:bg-neutral-50 px-6 py-3 rounded-xl font-bold text-sm shadow-sm transition-all hover:scale-105 duration-200 cursor-pointer'
                         >
                             Explore Catalog
                         </button>
-                        <button 
+                        <button
                             onClick={() => navigate('/book/educated')}
                             className='border border-white/40 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all hover:scale-105 duration-200 cursor-pointer'
                         >
@@ -137,7 +137,7 @@ const HomePage = () => {
                         </button>
                     </div>
                 </div>
-                
+
                 {/* Floating book cover layout */}
                 <div className='relative w-full max-w-[280px] aspect-[4/3] flex items-center justify-center z-10'>
                     <div className='absolute transform -rotate-12 translate-x-[-40px] z-0 scale-90 w-36 aspect-[3/4] rounded-lg shadow-lg border border-white/20 overflow-hidden bg-muted transition-transform duration-300 hover:scale-95'>
@@ -154,7 +154,7 @@ const HomePage = () => {
 
             {/* Features Banner */}
             <div className='mx-4 md:mx-12 grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12'>
-                <div className='flex items-center gap-4 p-5 rounded-2xl border border-border/80 bg-card text-card-foreground shadow-xs'>
+                <div className='flex items-center gap-4 p-5 rounded-xl border border-border/80 bg-card text-card-foreground shadow-xs'>
                     <div className='w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950/40 flex items-center justify-center text-[#6C5DD4] shrink-0 shadow-xs'>
                         <Truck className='w-6 h-6' />
                     </div>
@@ -163,7 +163,7 @@ const HomePage = () => {
                         <p className='text-xs text-muted-foreground mt-0.5'>On all orders over $50</p>
                     </div>
                 </div>
-                <div className='flex items-center gap-4 p-5 rounded-2xl border border-border/80 bg-card text-card-foreground shadow-xs'>
+                <div className='flex items-center gap-4 p-5 rounded-xl border border-border/80 bg-card text-card-foreground shadow-xs'>
                     <div className='w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950/40 flex items-center justify-center text-[#6C5DD4] shrink-0 shadow-xs'>
                         <ShieldCheck className='w-6 h-6' />
                     </div>
@@ -172,7 +172,7 @@ const HomePage = () => {
                         <p className='text-xs text-muted-foreground mt-0.5'>100% protected payment</p>
                     </div>
                 </div>
-                <div className='flex items-center gap-4 p-5 rounded-2xl border border-border/80 bg-card text-card-foreground shadow-xs'>
+                <div className='flex items-center gap-4 p-5 rounded-xl border border-border/80 bg-card text-card-foreground shadow-xs'>
                     <div className='w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950/40 flex items-center justify-center text-[#6C5DD4] shrink-0 shadow-xs'>
                         <DollarSign className='w-6 h-6' />
                     </div>
@@ -181,7 +181,7 @@ const HomePage = () => {
                         <p className='text-xs text-muted-foreground mt-0.5'>Direct publisher savings</p>
                     </div>
                 </div>
-                <div className='flex items-center gap-4 p-5 rounded-2xl border border-border/80 bg-card text-card-foreground shadow-xs'>
+                <div className='flex items-center gap-4 p-5 rounded-xl border border-border/80 bg-card text-card-foreground shadow-xs'>
                     <div className='w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950/40 flex items-center justify-center text-[#6C5DD4] shrink-0 shadow-xs'>
                         <HelpCircle className='w-6 h-6' />
                     </div>
@@ -199,7 +199,7 @@ const HomePage = () => {
                     <div className='flex items-center justify-between mb-6 pb-2 border-b border-border'>
                         <span className='text-lg font-bold text-foreground'>Filters</span>
                         {(selectedAuthors.length > 0 || selectedCategories.length > 0 || searchQuery) && (
-                            <button 
+                            <button
                                 onClick={handleResetFilters}
                                 className='text-xs font-semibold text-[#6C5DD4] hover:underline flex items-center gap-1 cursor-pointer'
                             >
@@ -251,7 +251,7 @@ const HomePage = () => {
                             <span className='text-sm font-medium text-muted-foreground'>
                                 Showing search results for <span className='text-foreground font-bold'>"{searchQuery}"</span> ({filteredBooks.length} books found)
                             </span>
-                            <button 
+                            <button
                                 onClick={() => setSearchParams({})}
                                 className='text-xs font-semibold text-[#6C5DD4] hover:underline flex items-center gap-1 cursor-pointer'
                             >
@@ -277,7 +277,7 @@ const HomePage = () => {
                             <p className='text-sm text-muted-foreground max-w-sm mb-6'>
                                 We couldn't find any books matching your selected filters or search terms. Try clearing your settings or using a different query.
                             </p>
-                            <button 
+                            <button
                                 onClick={handleResetFilters}
                                 className='px-5 py-2.5 bg-[#6C5DD4] text-white hover:bg-[#5b4eb8] rounded-xl text-sm font-semibold transition-all shadow-sm cursor-pointer'
                             >
@@ -296,10 +296,10 @@ const HomePage = () => {
                                     />
                                 ))}
                             </div>
-                            <PaginationComponent 
-                                currentPage={currentPage} 
-                                totalPages={totalPages} 
-                                onPageChange={setCurrentPage} 
+                            <PaginationComponent
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={setCurrentPage}
                             />
                         </>
                     )}
@@ -318,32 +318,32 @@ const HomePage = () => {
                     <p className='text-sm text-muted-foreground mb-8 leading-relaxed max-w-lg'>
                         Subscribe to our newsletter to receive updates on new arrivals, exclusive author interviews, special discounts, and literary events.
                     </p>
-                    
+
                     {isSubscribed ? (
                         <div className='bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 rounded-xl py-3 px-6 text-sm font-semibold max-w-md w-full animate-in fade-in zoom-in duration-300'>
                             Thank you for subscribing! We've sent a welcome email to your inbox.
                         </div>
                     ) : (
-                        <form 
+                        <form
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 if (emailInput.trim()) {
                                     setIsSubscribed(true);
                                     setEmailInput('');
                                 }
-                            }} 
+                            }}
                             className='flex flex-col sm:flex-row gap-3 w-full max-w-md'
                         >
-                            <input 
-                                type='email' 
+                            <input
+                                type='email'
                                 required
                                 placeholder='Enter your email address'
                                 value={emailInput}
                                 onChange={(e) => setEmailInput(e.target.value)}
                                 className='flex-1 h-11 px-4 rounded-xl border border-border bg-background text-sm focus:outline-none focus:border-[#6C5DD4] shadow-xs'
                             />
-                            <button 
-                                type='submit' 
+                            <button
+                                type='submit'
                                 className='h-11 px-6 bg-[#6C5DD4] text-white hover:bg-[#5b4eb8] rounded-xl font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow cursor-pointer'
                             >
                                 Subscribe
