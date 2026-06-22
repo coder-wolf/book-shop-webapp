@@ -10,7 +10,7 @@ const BookDetailsPage = () => {
     const [quantity, setQuantity] = useState(1);
     const [activeTab, setActiveTab] = useState('description');
     const { toggleFavorite, isBookFavorite, addToCart } = useShop();
-
+    
     // Find the current book
     const book = books.find(b => b.id === id);
     const isFavorite = isBookFavorite(book?.id);
@@ -38,8 +38,8 @@ const BookDetailsPage = () => {
         .slice(0, 4);
 
     // Fallback in case no related books share categories
-    const displayedRelatedBooks = relatedBooks.length > 0
-        ? relatedBooks
+    const displayedRelatedBooks = relatedBooks.length > 0 
+        ? relatedBooks 
         : books.filter(b => b.id !== book.id).slice(0, 4);
 
     const handleIncrement = () => setQuantity(prev => prev + 1);
@@ -77,10 +77,10 @@ const BookDetailsPage = () => {
                 {/* Book Cover Image */}
                 <div className='lg:col-span-5 xl:col-span-4 flex justify-center lg:justify-start items-start'>
                     <div className='w-full max-w-[320px] lg:max-w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-border bg-muted group relative'>
-                        <img
-                            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            src={book.coverImage}
-                            alt={book.title}
+                        <img 
+                            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105' 
+                            src={book.coverImage} 
+                            alt={book.title} 
                         />
                         <div className='absolute top-3 right-3 bg-white/95 dark:bg-black/80 backdrop-blur px-2.5 py-1 rounded-md text-[10px] font-bold text-[#6C5DD4] uppercase tracking-wider shadow-sm'>
                             {book.format}
@@ -139,7 +139,7 @@ const BookDetailsPage = () => {
                     {/* Actions and Quantity */}
                     <div className='flex flex-wrap gap-4 items-center bg-muted/35 dark:bg-muted/10 p-4 rounded-xl border border-border/60 max-w-xl'>
                         <div className='flex items-center border border-border bg-background rounded-lg h-11'>
-                            <button
+                            <button 
                                 onClick={handleDecrement}
                                 className='px-3 hover:bg-muted text-muted-foreground transition-colors duration-150 h-full rounded-l-lg cursor-pointer'
                                 aria-label="Decrease quantity"
@@ -147,7 +147,7 @@ const BookDetailsPage = () => {
                                 <Minus className='w-4 h-4' />
                             </button>
                             <span className='w-12 text-center font-semibold text-sm'>{quantity}</span>
-                            <button
+                            <button 
                                 onClick={handleIncrement}
                                 className='px-3 hover:bg-muted text-muted-foreground transition-colors duration-150 h-full rounded-r-lg cursor-pointer'
                                 aria-label="Increase quantity"
@@ -156,16 +156,20 @@ const BookDetailsPage = () => {
                             </button>
                         </div>
 
-                        <button className='flex-1 h-11 flex items-center justify-center gap-2 bg-[#6C5DD4] text-white hover:bg-[#5b4eb8] rounded-lg font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow cursor-pointer'>
+                        <button 
+                            onClick={() => addToCart(book.id, quantity)}
+                            className='flex-1 h-11 flex items-center justify-center gap-2 bg-[#6C5DD4] text-white hover:bg-[#5b4eb8] rounded-lg font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow cursor-pointer'
+                        >
                             <ShoppingCart className='w-4 h-4' /> Add to Cart
                         </button>
 
-                        <button
-                            onClick={() => setIsFavorite(prev => !prev)}
-                            className={`w-11 h-11 flex items-center justify-center border rounded-lg transition-all duration-200 cursor-pointer ${isFavorite
-                                ? 'bg-rose-50 border-rose-200 text-rose-500 dark:bg-rose-950/20 dark:border-rose-900/50'
-                                : 'border-border hover:bg-muted text-muted-foreground'
-                                }`}
+                        <button 
+                            onClick={() => toggleFavorite(book.id)}
+                            className={`w-11 h-11 flex items-center justify-center border rounded-lg transition-all duration-200 cursor-pointer ${
+                                isFavorite 
+                                    ? 'bg-rose-50 border-rose-200 text-rose-500 dark:bg-rose-950/20 dark:border-rose-900/50' 
+                                    : 'border-border hover:bg-muted text-muted-foreground'
+                            }`}
                             aria-label="Add to favorites"
                         >
                             <Heart className={`w-4 h-4 ${isFavorite ? 'fill-rose-500' : ''}`} />
@@ -179,21 +183,23 @@ const BookDetailsPage = () => {
                 {/* Left: Tab Content (Description & Reviews) */}
                 <div className='lg:col-span-8'>
                     <div className='flex border-b border-border mb-6 gap-6'>
-                        <button
+                        <button 
                             onClick={() => setActiveTab('description')}
-                            className={`pb-3 font-semibold text-sm transition-all duration-200 border-b-2 cursor-pointer ${activeTab === 'description'
-                                ? 'border-[#6C5DD4] text-foreground'
-                                : 'border-transparent text-muted-foreground hover:text-foreground'
-                                }`}
+                            className={`pb-3 font-semibold text-sm transition-all duration-200 border-b-2 cursor-pointer ${
+                                activeTab === 'description' 
+                                    ? 'border-[#6C5DD4] text-foreground' 
+                                    : 'border-transparent text-muted-foreground hover:text-foreground'
+                            }`}
                         >
                             Description
                         </button>
-                        <button
+                        <button 
                             onClick={() => setActiveTab('reviews')}
-                            className={`pb-3 font-semibold text-sm transition-all duration-200 border-b-2 cursor-pointer ${activeTab === 'reviews'
-                                ? 'border-[#6C5DD4] text-foreground'
-                                : 'border-transparent text-muted-foreground hover:text-foreground'
-                                }`}
+                            className={`pb-3 font-semibold text-sm transition-all duration-200 border-b-2 cursor-pointer ${
+                                activeTab === 'reviews' 
+                                    ? 'border-[#6C5DD4] text-foreground' 
+                                    : 'border-transparent text-muted-foreground hover:text-foreground'
+                            }`}
                         >
                             Reviews ({book.reviewsCount})
                         </button>
@@ -243,7 +249,7 @@ const BookDetailsPage = () => {
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div className='space-y-4 pt-2'>
                                 <div className='border-b border-border/60 pb-4'>
                                     <div className='flex justify-between items-start mb-1.5'>
@@ -324,7 +330,7 @@ const BookDetailsPage = () => {
                 </div>
                 <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6'>
                     {displayedRelatedBooks.map((relatedBook) => (
-                        <BookCard
+                        <BookCard 
                             key={relatedBook.id}
                             id={relatedBook.id}
                             title={relatedBook.title}

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import Root from "../layouts/Root";
 import HomePage from "@/pages/HomePage/HomePage";
-import BookDetailsPage from "@/pages/BookDetailsPage";
+import BookDetailsPage from "@/pages/BookDetails/BookDetailsPage";
 import CartPage from "@/pages/CartPage";
 import FavoritesPage from "@/pages/FavoritesPage";
 
